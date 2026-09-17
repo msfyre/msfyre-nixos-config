@@ -3,12 +3,13 @@
   boot.loader.grub.enable = true;
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_rpi;
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   services.displayManager.sddm = {
   	enable = true;
 	wayland.enable = true;
   };
+
 
   networking.hostName = "msfyre-nixos-server";
   
@@ -17,15 +18,10 @@
   programs.hyprland.enable = true;
   
   environment.systemPackages = [
-  	pkgs.kitty,
-	inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default,
+  	pkgs.kitty
+	pkgs.neovim
   ];
 
-  inputs = {
-  	noctalia = {
-		url = "github:noctalia-dev/noctalia";
-	}
-  }
 
   users.users = {
   	administrator = {
