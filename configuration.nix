@@ -12,6 +12,13 @@
   programs.hyprland.enable = true;
   
   environment.systemPackages = [
-  	pkgs.kitty
+  	pkgs.kitty,
+	inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default,
   ];
+
+  inputs = {
+  	noctalia = {
+		url = "github:noctalia-dev/noctalia";
+	}
+  }
 }
