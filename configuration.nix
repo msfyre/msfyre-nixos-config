@@ -26,7 +26,6 @@
   users.users = {
   	administrator = {
 		isNormalUser = true;
-		home = "/home/admin/";
 		description = "Server Administrator";
 		extraGroups = [
 			"wheel"
