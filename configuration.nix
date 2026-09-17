@@ -4,25 +4,21 @@
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
-  services.displayManager.sddm = {
-  	enable = true;
-	wayland.enable = true;
-  };
-
   services.openssh.enable = true;
 
   networking.hostName = "msfyre-nixos-server";
+  networking.networkmanager.enable = true;
   
-  imports = [ ./hardware-configuration.nix ];
-
-  programs.hyprland.enable = true;
-  
-  environment.systemPackages = [
-	pkgs.neovim
-	pkgs.git
-	pkgs.gh
+  imports = [
+    ./hardware-configuration.nix
+    ./configuration.docker.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+	neovim
+	git
+	gh
+  ];
 
   users.users = {
   	administrator = {
@@ -30,7 +26,9 @@
 		description = "Server Administrator";
 		extraGroups = [
 			"wheel"
+			"docker"
 		];
 	};
   };
+
 }
