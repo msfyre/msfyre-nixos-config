@@ -9,6 +9,7 @@
 	wayland.enable = true;
   };
 
+  services.openssh.enable = true;
 
   networking.hostName = "msfyre-nixos-server";
   
