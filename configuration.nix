@@ -8,4 +8,10 @@
   networking.hostName = "msfyre-nixos-server";
   
   imports = [ ./hardware-configuration.nix ];
+
+  programs.hyprland.enable = true;
+  
+  environment.systemPackages = [
+  	pkgs.kitty
+  ];
 }
